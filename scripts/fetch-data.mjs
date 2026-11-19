@@ -40,7 +40,7 @@ async function main() {
     generatedAt: new Date().toISOString(),
   }
   await writeFile(join(outRoot, 'manifest.json'), JSON.stringify(manifest, null, 2))
-  console.log('Wrote manifesto.json')
+  console.log('Wrote manifest.json')
 }
 
 main().catch((e) => {
