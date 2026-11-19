@@ -14,11 +14,12 @@ npm run fetch-data
 npm run dev
 ```
 
-Then open **http://localhost:5173** in your browser.
+Then open **http://localhost:5173** in your browser (Vite binds `0.0.0.0` so Try Live / VM localhost works).
 
 - Default branch (`main`) has the full app — no feature branch checkout needed.
 - `npm run fetch-data` downloads match/odds CSVs into `public/data/` (needed once; ~7MB). The app can also fetch from football-data.co.uk at runtime if a file is missing.
-- Production build: `npm run build && npm run preview`
+- Production build: `npm run build && npm run preview` (preview on `0.0.0.0:4173`).
+- **Salto a caballo** tab loads precomputed CSVs from `public/data/salto/` (synced from `simulations/salto/` after the Python run).
 
 ## Leagues & seasons
 

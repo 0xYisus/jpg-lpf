@@ -25,6 +25,9 @@ public/data/**/*.csv
 # Salto ships SP1 1617–2526 so the Python sim/tests reproduce offline
 !public/data/SP1/
 !public/data/SP1/*.csv
+# Web UI Salto tab (synced from simulations/salto via scripts/sync-salto-web.sh)
+!public/data/salto/
+!public/data/salto/*.csv
 
 # Editor directories and files
 .vscode/*
