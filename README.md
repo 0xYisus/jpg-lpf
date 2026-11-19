@@ -4,6 +4,8 @@ Football-inspired web app: browse ~10 seasons of Europe’s top five leagues and
 
 ## Run locally
 
+Requires **Node.js 20+** (verified on Node 22) and npm.
+
 ```bash
 git clone https://github.com/0xYisus/jpg-lpf.git
 cd jpg-lpf
@@ -14,6 +16,7 @@ npm run dev
 
 Then open **http://localhost:5173** in your browser.
 
+- Default branch (`main`) has the full app — no feature branch checkout needed.
 - `npm run fetch-data` downloads match/odds CSVs into `public/data/` (needed once; ~7MB). The app can also fetch from football-data.co.uk at runtime if a file is missing.
 - Production build: `npm run build && npm run preview`
 
