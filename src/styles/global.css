@@ -482,6 +482,47 @@ table.data tr:hover td {
   text-align: center;
 }
 
+.match-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--stroke);
+  white-space: nowrap;
+}
+
+.match-pill.ok {
+  color: var(--good);
+  background: rgba(93, 222, 160, 0.12);
+  border-color: rgba(93, 222, 160, 0.35);
+}
+
+.match-pill.warn {
+  color: var(--bad);
+  background: rgba(255, 123, 123, 0.12);
+  border-color: rgba(255, 123, 123, 0.35);
+}
+
+button.linkish {
+  appearance: none;
+  border: 0;
+  background: none;
+  color: var(--pitch-line);
+  padding: 0;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+code {
+  font-size: 0.88em;
+  color: var(--kit-gold);
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;

@@ -1,10 +1,11 @@
 interface HeroProps {
   onBrowse: () => void
   onSimulate: () => void
+  onSalto: () => void
   matchCount: number
 }
 
-export function Hero({ onBrowse, onSimulate, matchCount }: HeroProps) {
+export function Hero({ onBrowse, onSimulate, onSalto, matchCount }: HeroProps) {
   return (
     <section className="hero" aria-label="JPG LPF hero">
       <div className="hero-pitch" aria-hidden>
@@ -22,6 +23,9 @@ export function Hero({ onBrowse, onSimulate, matchCount }: HeroProps) {
           </button>
           <button type="button" className="btn btn-ghost" onClick={onSimulate}>
             Run a strategy
+          </button>
+          <button type="button" className="btn btn-ghost" onClick={onSalto}>
+            Salto a caballo
           </button>
         </div>
         {matchCount > 0 && (

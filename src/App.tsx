@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react'
 import { Hero } from './components/Hero'
 import { MatchBrowser } from './components/MatchBrowser'
+import { SaltoSimulator } from './components/SaltoSimulator'
 import { Simulator } from './components/Simulator'
 import { SEASONS } from './data/leagues'
 import { defaultProvider } from './data/footballDataProvider'
 import type { Match } from './data/types'
 
-type Tab = 'home' | 'browse' | 'simulate'
+type Tab = 'home' | 'browse' | 'simulate' | 'salto'
+
+const TAB_IDS: Record<Exclude<Tab, 'home'>, string> = {
+  browse: 'browse',
+  simulate: 'simulate',
+  salto: 'salto',
+}
 
 export default function App() {
   const [tab, setTab] = useState<Tab>('home')
@@ -39,7 +46,7 @@ export default function App() {
     setTab(next)
     if (next !== 'home') {
       requestAnimationFrame(() => {
-        document.getElementById(next === 'browse' ? 'browse' : 'simulate')?.scrollIntoView({
+        document.getElementById(TAB_IDS[next])?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         })
@@ -74,6 +81,13 @@ export default function App() {
           >
             Simulator
           </button>
+          <button
+            type="button"
+            className={tab === 'salto' ? 'active' : ''}
+            onClick={() => go('salto')}
+          >
+            Salto
+          </button>
         </nav>
       </header>
 
@@ -82,17 +96,18 @@ export default function App() {
           matchCount={matches.length}
           onBrowse={() => go('browse')}
           onSimulate={() => go('simulate')}
+          onSalto={() => go('salto')}
         />
       )}
 
-      {loading && (
+      {loading && tab !== 'salto' && (
         <div className="loading-banner">
           <div className="spinner" aria-hidden />
           Loading cached match data from football-data.co.uk…
         </div>
       )}
 
-      {error && (
+      {error && tab !== 'salto' && (
         <div className="loading-banner" style={{ borderColor: 'var(--bad)' }}>
           {error}
         </div>
@@ -106,10 +121,12 @@ export default function App() {
         <Simulator matches={matches} />
       )}
 
+      {(tab === 'salto' || tab === 'home') && <SaltoSimulator />}
+
       {tab === 'home' && (
         <p className="footer-note">
-          Data source: football-data.co.uk free CSVs · provider interface is swappable ·
-          JPG LPF · for research / entertainment only
+          Data source: football-data.co.uk free CSVs · Salto artifacts from{' '}
+          <code>simulations/salto/</code> · JPG LPF · research / entertainment only
         </p>
       )}
     </div>

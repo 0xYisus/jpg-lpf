@@ -14,11 +14,12 @@ npm run fetch-data
 npm run dev
 ```
 
-Then open **http://localhost:5173** in your browser.
+Then open **http://localhost:5173** in your browser (Vite binds `0.0.0.0` so Try Live / VM localhost works).
 
 - Default branch (`main`) has the full app — no feature branch checkout needed.
 - `npm run fetch-data` downloads match/odds CSVs into `public/data/` (needed once; ~7MB). The app can also fetch from football-data.co.uk at runtime if a file is missing.
-- Production build: `npm run build && npm run preview`
+- Production build: `npm run build && npm run preview` (preview on `0.0.0.0:4173`).
+- **Salto a caballo** tab loads precomputed CSVs from `public/data/salto/` (synced from `simulations/salto/` after the Python run).
 
 ## Leagues & seasons
 
@@ -30,7 +31,18 @@ Then open **http://localhost:5173** in your browser.
 | D1 | Bundesliga | Germany |
 | F1 | Ligue 1 | France |
 
-Seasons: `1516` … `2425` (2015/16 → 2024/25).
+Seasons: `1516` … `2526` (2015/16 → 2025/26). For the web lab, `npm run fetch-data` covers the top-five leagues; Salto uses SP1 `1617`–`2526` plus OpenFootball calendars via `python3 scripts/fetch_salto_data.py`.
+
+## Salto a caballo (Python)
+
+Historical LaLiga simulator (4th-place home wins, 100/500 stake machine). See [`salto/README.md`](salto/README.md).
+
+```bash
+python3 scripts/fetch_salto_data.py
+python3 -m pip install -r salto/requirements.txt
+PYTHONPATH=salto python3 -m salto_a_caballo
+python3 -m pytest salto/tests -q
+```
 
 ## Strategy rules (short)
 
