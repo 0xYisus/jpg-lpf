@@ -1,8 +1,23 @@
 # JPG LPF — Match Odds & Strategy Lab
 
-Football-inspired web app for browsing ~10 seasons of Europe’s top five leagues and simulating flat-stake betting strategies on historical 1X2 odds.
+Football-inspired web app: browse ~10 seasons of Europe’s top five leagues and simulate flat-stake betting strategies on historical 1X2 odds (football-data.co.uk).
 
-## Leagues
+## Run locally
+
+```bash
+git clone https://github.com/0xYisus/jpg-lpf.git
+cd jpg-lpf
+npm install
+npm run fetch-data
+npm run dev
+```
+
+Then open **http://localhost:5173** in your browser.
+
+- `npm run fetch-data` downloads match/odds CSVs into `public/data/` (needed once; ~7MB). The app can also fetch from football-data.co.uk at runtime if a file is missing.
+- Production build: `npm run build && npm run preview`
+
+## Leagues & seasons
 
 | Code | League | Country |
 |------|--------|---------|
@@ -14,39 +29,15 @@ Football-inspired web app for browsing ~10 seasons of Europe’s top five league
 
 Seasons: `1516` … `2425` (2015/16 → 2024/25).
 
-## Data
+## Strategy rules (short)
 
-- Source: [football-data.co.uk](https://www.football-data.co.uk) free CSVs
-- Cached under `public/data/{league}/{season}.csv` (offline after first fetch)
-- Refresh: `npm run fetch-data`
-- Provider interface: `src/data/types.ts` → `DataProvider` (swap for an API later)
+- **Team** — bet whenever that club plays (home / away / both).
+- **Position at kickoff** — rebuild the season table from fixtures with an earlier kickoff (points → GD → GF → name); bet only if that side is in the match.
+- **Streaks** — optional: selected team’s last N results in that league-season must be W, D, or L.
+- **Stake** — flat stake; bankroll / ROI / drawdown on the equity chart.
 
-Odds preference: closing averages (`AvgCH/CD/CA`) → Bet365 close → market averages → Bet365 open.
-
-## Strategy rules
-
-**Team selection** — bet whenever that club plays (venue filter applied).
-
-**Position at kickoff** — before each match, rebuild the league table from that season’s completed fixtures with an earlier kickoff. Ranking: points → GD → GF → name. Bet only if the team currently in position N is in the fixture.
-
-**Streaks** — optional: require the selected team’s last N results in that league-season to be W, D, or L before placing the next bet.
-
-**Stake** — flat stake with optional starting bankroll / drawdown tracking.
-
-## Run
-
-```bash
-npm install
-npm run dev
-```
-
-Build:
-
-```bash
-npm run build
-npm run preview
-```
+Odds preference: closing averages → Bet365 close → market averages → open.
 
 ## Stack
 
-React + Vite + TypeScript + Recharts + PapaParse.
+React + Vite + TypeScript + Recharts + PapaParse. Data layer is swappable (`src/data/types.ts` → `DataProvider`).
