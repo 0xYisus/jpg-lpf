@@ -1,1 +1,0 @@
-package-lock.json and public/data CSVs pending MCP size limits; regenerate with npm install / npm run fetch-data
