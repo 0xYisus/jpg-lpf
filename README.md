@@ -30,7 +30,18 @@ Then open **http://localhost:5173** in your browser.
 | D1 | Bundesliga | Germany |
 | F1 | Ligue 1 | France |
 
-Seasons: `1516` … `2425` (2015/16 → 2024/25).
+Seasons: `1516` … `2526` (2015/16 → 2025/26). For the web lab, `npm run fetch-data` covers the top-five leagues; Salto uses SP1 `1617`–`2526` plus OpenFootball calendars via `python3 scripts/fetch_salto_data.py`.
+
+## Salto a caballo (Python)
+
+Historical LaLiga simulator (4th-place home wins, 100/500 stake machine). See [`salto/README.md`](salto/README.md).
+
+```bash
+python3 scripts/fetch_salto_data.py
+python3 -m pip install -r salto/requirements.txt
+PYTHONPATH=salto python3 -m salto_a_caballo
+python3 -m pytest salto/tests -q
+```
 
 ## Strategy rules (short)
 

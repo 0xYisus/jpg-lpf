@@ -13,7 +13,7 @@ const outRoot = join(__dirname, '..', 'public', 'data')
 const LEAGUES = ['E0', 'SP1', 'I1', 'D1', 'F1']
 const SEASONS = [
   '1516', '1617', '1718', '1819', '1920',
-  '2021', '2122', '2223', '2324', '2425',
+  '2021', '2122', '2223', '2324', '2425', '2526',
 ]
 
 async function main() {

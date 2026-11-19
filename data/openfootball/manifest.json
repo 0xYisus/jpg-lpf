@@ -1,0 +1,29 @@
+{
+  "source_football_data": "https://www.football-data.co.uk",
+  "source_openfootball": "https://github.com/openfootball/football.json",
+  "league": "SP1",
+  "seasons": [
+    "1617",
+    "1718",
+    "1819",
+    "1920",
+    "2021",
+    "2122",
+    "2223",
+    "2324",
+    "2425",
+    "2526"
+  ],
+  "openfootball_labels": [
+    "2016-17",
+    "2017-18",
+    "2018-19",
+    "2019-20",
+    "2020-21",
+    "2021-22",
+    "2022-23",
+    "2023-24",
+    "2024-25",
+    "2025-26"
+  ]
+}

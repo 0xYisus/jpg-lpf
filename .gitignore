@@ -1,7 +1,15 @@
 # Logs
 logs
 *.log
+!simulations/salto/residual_ties.log
 npm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
@@ -12,8 +20,11 @@ dist
 dist-ssr
 *.local
 
-# Fetched match CSVs (regenerate with npm run fetch-data)
+# Fetched match CSVs (regenerate with npm run fetch-data / fetch_salto_data.py)
 public/data/**/*.csv
+# Salto ships SP1 1617–2526 so the Python sim/tests reproduce offline
+!public/data/SP1/
+!public/data/SP1/*.csv
 
 # Editor directories and files
 .vscode/*
